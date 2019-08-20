@@ -1,4 +1,4 @@
-dist: trusty
+pidist: trusty
 sudo: false
 notifications:
   email: false
