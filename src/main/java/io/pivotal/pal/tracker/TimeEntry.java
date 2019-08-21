@@ -5,10 +5,6 @@ import java.util.Objects;
 
 public class TimeEntry {
 
-    public long getProjectId() {
-        return projectId;
-    }
-
     private long id;
     private long projectId;
     private long userId;
@@ -30,12 +26,14 @@ public class TimeEntry {
         this.hours = hours;
     }
 
-    public TimeEntry() {
-
-    }
+    public TimeEntry() {}
 
     public Long getId() {
         return id;
+    }
+
+    public long getProjectId() {
+        return projectId;
     }
 
     public long getUserId() {

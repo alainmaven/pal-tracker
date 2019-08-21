@@ -47,83 +47,83 @@ public class TimeEntryControllerTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(response.getBody()).isEqualTo(expectedResult);
     }
-//
-//    @Test
-//    public void testRead() {
-//        long timeEntryId = 1L;
-//        long projectId = 123L;
-//        long userId = 456L;
-//        TimeEntry expected = new TimeEntry(timeEntryId, projectId, userId, LocalDate.parse("2017-01-08"), 8);
-//        doReturn(expected)
-//            .when(timeEntryRepository)
-//            .find(timeEntryId);
-//
-//        ResponseEntity<TimeEntry> response = controller.read(timeEntryId);
-//
-//        verify(timeEntryRepository).find(timeEntryId);
-//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-//        assertThat(response.getBody()).isEqualTo(expected);
-//    }
-//
-//    @Test
-//    public void testRead_NotFound() {
-//        long nonExistentTimeEntryId = 1L;
-//        doReturn(null)
-//            .when(timeEntryRepository)
-//            .find(nonExistentTimeEntryId);
-//
-//        ResponseEntity<TimeEntry> response = controller.read(nonExistentTimeEntryId);
-//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-//    }
-//
-//    @Test
-//    public void testList() {
-//        List<TimeEntry> expected = asList(
-//            new TimeEntry(1L, 123L, 456L, LocalDate.parse("2017-01-08"), 8),
-//            new TimeEntry(2L, 789L, 321L, LocalDate.parse("2017-01-07"), 4)
-//        );
-//        doReturn(expected).when(timeEntryRepository).list();
-//
-//        ResponseEntity<List<TimeEntry>> response = controller.list();
-//
-//        verify(timeEntryRepository).list();
-//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-//        assertThat(response.getBody()).isEqualTo(expected);
-//    }
-//
-//    @Test
-//    public void testUpdate() {
-//        long timeEntryId = 1L;
-//        long projectId = 987L;
-//        long userId = 654L;
-//        TimeEntry expected = new TimeEntry(timeEntryId, projectId, userId, LocalDate.parse("2017-01-07"), 4);
-//        doReturn(expected)
-//            .when(timeEntryRepository)
-//            .update(eq(timeEntryId), any(TimeEntry.class));
-//
-//        ResponseEntity response = controller.update(timeEntryId, expected);
-//
-//        verify(timeEntryRepository).update(timeEntryId, expected);
-//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-//        assertThat(response.getBody()).isEqualTo(expected);
-//    }
-//
-//    @Test
-//    public void testUpdate_NotFound() {
-//        long nonExistentTimeEntryId = 1L;
-//        doReturn(null)
-//            .when(timeEntryRepository)
-//            .update(eq(nonExistentTimeEntryId), any(TimeEntry.class));
-//
-//        ResponseEntity response = controller.update(nonExistentTimeEntryId, new TimeEntry());
-//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-//    }
-//
-//    @Test
-//    public void testDelete() {
-//        long timeEntryId = 1L;
-//        ResponseEntity response = controller.delete(timeEntryId);
-//        verify(timeEntryRepository).delete(timeEntryId);
-//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
-//    }
+
+    @Test
+    public void testRead() {
+        long timeEntryId = 1L;
+        long projectId = 123L;
+        long userId = 456L;
+        TimeEntry expected = new TimeEntry(timeEntryId, projectId, userId, LocalDate.parse("2017-01-08"), 8);
+        doReturn(expected)
+            .when(timeEntryRepository)
+            .find(timeEntryId);
+
+        ResponseEntity<TimeEntry> response = controller.read(timeEntryId);
+
+        verify(timeEntryRepository).find(timeEntryId);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(expected);
+    }
+
+    @Test
+    public void testRead_NotFound() {
+        long nonExistentTimeEntryId = 1L;
+        doReturn(null)
+            .when(timeEntryRepository)
+            .find(nonExistentTimeEntryId);
+
+        ResponseEntity<TimeEntry> response = controller.read(nonExistentTimeEntryId);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+    }
+
+    @Test
+    public void testList() {
+        List<TimeEntry> expected = asList(
+            new TimeEntry(1L, 123L, 456L, LocalDate.parse("2017-01-08"), 8),
+            new TimeEntry(2L, 789L, 321L, LocalDate.parse("2017-01-07"), 4)
+        );
+        doReturn(expected).when(timeEntryRepository).list();
+
+        ResponseEntity<List<TimeEntry>> response = controller.list();
+
+        verify(timeEntryRepository).list();
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(expected);
+    }
+
+    @Test
+    public void testUpdate() {
+        long timeEntryId = 1L;
+        long projectId = 987L;
+        long userId = 654L;
+        TimeEntry expected = new TimeEntry(timeEntryId, projectId, userId, LocalDate.parse("2017-01-07"), 4);
+        doReturn(expected)
+            .when(timeEntryRepository)
+            .update(eq(timeEntryId), any(TimeEntry.class));
+
+        ResponseEntity response = controller.update(timeEntryId, expected);
+
+        verify(timeEntryRepository).update(timeEntryId, expected);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(expected);
+    }
+
+    @Test
+    public void testUpdate_NotFound() {
+        long nonExistentTimeEntryId = 1L;
+        doReturn(null)
+            .when(timeEntryRepository)
+            .update(eq(nonExistentTimeEntryId), any(TimeEntry.class));
+
+        ResponseEntity response = controller.update(nonExistentTimeEntryId, new TimeEntry());
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+    }
+
+    @Test
+    public void testDelete() {
+        long timeEntryId = 1L;
+        ResponseEntity response = controller.delete(timeEntryId);
+        verify(timeEntryRepository).delete(timeEntryId);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+    }
 }
