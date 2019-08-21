@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,14 +22,14 @@ public class TimeEntryController {
 
 
     @PostMapping("/time-entries")
-    public ResponseEntity create(TimeEntry timeEntryToCreate) {
+    public ResponseEntity create(@RequestBody TimeEntry timeEntryToCreate) {
         System.out.println("Create out: " +timeEntryToCreate.getProjectId());
         ResponseEntity<TimeEntry> timeEntryResponseEntity =
                 new ResponseEntity<>(timeEntryRepository.create(timeEntryToCreate), HttpStatus.CREATED);
 
         return timeEntryResponseEntity;
     }
-
+    @GetMapping("/time-entries")
     public ResponseEntity<TimeEntry> read(long timeEntryId) {
 
         ResponseEntity<TimeEntry> timeEntryResponseEntity;
